@@ -11,13 +11,13 @@ export type HeaderMode = 'float' | 'screen' | 'none';
 export type HeaderProps = NavigationSceneRendererProps & {
   mode: HeaderMode,
   router: NavigationRouter<
-    NavigationState,
-    NavigationAction,
-    NavigationStackScreenOptions
+  NavigationState,
+  NavigationAction,
+  NavigationStackScreenOptions
   >,
   getScreenDetails: NavigationScene => NavigationScreenDetails<
     NavigationStackScreenOptions
-  >,
+    >,
   style: Style,
 };
 
@@ -96,9 +96,9 @@ export type NavigationRouter<State, Action, Options> = {
   getPathAndParamsForState: (
     state: State
   ) => {
-    path: string,
-    params?: NavigationParams,
-  },
+      path: string,
+      params?: NavigationParams,
+    },
 
   getComponentForRouteName: (routeName: string) => NavigationComponent,
 
@@ -150,14 +150,14 @@ export type NavigationScreenConfig<Options> =
   | (NavigationScreenConfigProps &
     (({
       navigationOptions: NavigationScreenProp<
-        NavigationRoute,
-        NavigationAction
+      NavigationRoute,
+      NavigationAction
       >,
     }) => Options));
 
 export type NavigationComponent =
   | NavigationScreenComponent<*, *>
-  | NavigationNavigator<*, *, *, *>;
+  | NavigationNavigator <*, *, *, *>;
 
 export type NavigationScreenComponent<T, Options> = ReactClass<T> & {
   navigationOptions?: NavigationScreenConfig<Options>,
@@ -223,18 +223,18 @@ export type NavigationStackViewConfig = {
 };
 
 export type NavigationStackScreenOptions = NavigationScreenOptions & {
-  header?: ?(React.Element<*> | (HeaderProps => React.Element<*>)),
+  header?: ?(React.Element<*> | (HeaderProps => React.Element <*>)),
   headerTitle?: string | React.Element<*>,
-  headerTitleStyle?: Style,
-  headerTintColor?: string,
-  headerLeft?: React.Element<*>,
-  headerBackTitle?: string,
-  headerTruncatedBackTitle?: string,
-  headerBackTitleStyle?: Style,
-  headerPressColorAndroid?: string,
-  headerRight?: React.Element<*>,
-  headerStyle?: Style,
-  gesturesEnabled?: boolean,
+    headerTitleStyle ?: Style,
+    headerTintColor ?: string,
+    headerLeft ?: React.Element <*>,
+    headerBackTitle ?: string,
+    headerTruncatedBackTitle ?: string,
+    headerBackTitleStyle ?: Style,
+    headerPressColorAndroid ?: string,
+    headerRight ?: React.Element <*>,
+    headerStyle ?: Style,
+    gesturesEnabled ?: boolean,
 };
 
 export type NavigationStackRouterConfig = {
@@ -263,16 +263,16 @@ export type NavigationAction =
 
 export type NavigationRouteConfig<T> = T & {
   navigationOptions?: NavigationScreenConfig<*>,
-  path?: string,
+    path ?: string,
 };
 
 export type NavigationScreenRouteConfig =
   | {
-      screen: NavigationComponent,
-    }
+    screen: NavigationComponent,
+  }
   | {
-      getScreen: () => NavigationComponent,
-    };
+    getScreen: () => NavigationComponent,
+  };
 
 export type NavigationPathsConfig = {
   [routeName: string]: string,
@@ -290,30 +290,31 @@ export type NavigationTabRouterConfig = {
 
 export type NavigationTabScreenOptions = NavigationScreenOptions & {
   tabBarIcon?:
-    | React.Element<*>
-    | ((options: { tintColor: ?string, focused: boolean }) => ?React.Element<
+  | React.Element<*>
+    | ((options: { tintColor: ?string, focused: boolean }) => ?React.Element <
       *
     >),
-  tabBarLabel?:
+    tabBarLabel ?:
     | string
-    | React.Element<*>
-    | ((options: { tintColor: ?string, focused: boolean }) => ?React.Element<
+      | React.Element <*>
+    | ((options: { tintColor: ?string, focused: boolean }) => ?React.Element <
       *
     >),
-  tabBarVisible?: boolean,
+    tabBarVisible ?: boolean,
 };
 
 export type NavigationDrawerScreenOptions = NavigationScreenOptions & {
   drawerIcon?:
-    | React.Element<*>
-    | ((options: { tintColor: ?string, focused: boolean }) => ?React.Element<
-      *
-    >),
-  drawerLabel?:
-    | React.Element<*>
-    | ((options: { tintColor: ?string, focused: boolean }) => ?React.Element<
-      *
-    >),
+  | React.Element<*>
+    | ((
+      options: { tintColor: ?string, focused: boolean },
+    ) => ?React.Element <*>),
+    drawerLabel ?:
+    | React.Element <*>
+    | ((
+        options: { tintColor: ?string, focused: boolean },
+      ) => ?React.Element <*>),
+    drawerLockMode ?: 'unlocked' | 'locked-close' | 'locked-open', // defaults `unlocked`
 };
 
 export type NavigationRouteConfigMap = {
@@ -342,7 +343,7 @@ export type NavigationScreenProp<S, A> = {
 export type NavigationNavigatorProps<T> = {
   navigation: NavigationProp<T, NavigationAction>,
   screenProps: *,
-  navigationOptions: *,
+    navigationOptions: *,
 };
 
 /**
@@ -428,7 +429,7 @@ export type NavigationAnimationSetter = (
   lastState: NavigationState
 ) => void;
 
-export type NavigationSceneRenderer = () => ?React.Element<*>;
+export type NavigationSceneRenderer = () => ?React.Element <*>;
 
 export type NavigationStyleInterpolator = (
   props: NavigationSceneRendererProps

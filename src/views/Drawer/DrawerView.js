@@ -8,12 +8,12 @@ import DrawerSidebar from './DrawerSidebar';
 
 import type {
   NavigationScreenProp,
-  NavigationRoute,
-  NavigationRouter,
-  NavigationState,
-  NavigationAction,
-  NavigationDrawerScreenOptions,
-  Style,
+    NavigationRoute,
+    NavigationRouter,
+    NavigationState,
+    NavigationAction,
+    NavigationDrawerScreenOptions,
+    Style,
 } from '../../TypeDefinition';
 
 export type DrawerScene = {
@@ -32,16 +32,16 @@ export type DrawerViewConfig = {
   drawerWidth: number,
   drawerPosition: 'left' | 'right',
   contentComponent: ReactClass<*>,
-  contentOptions?: {},
-  style?: Style,
+    contentOptions ?: {},
+    style ?: Style,
 };
 
 type Props = DrawerViewConfig & {
   screenProps?: {},
   router: NavigationRouter<
-    NavigationState,
-    NavigationAction,
-    NavigationDrawerScreenOptions
+  NavigationState,
+  NavigationAction,
+  NavigationDrawerScreenOptions
   >,
   navigation: NavigationScreenProp<NavigationState, NavigationAction>,
 };
@@ -49,10 +49,10 @@ type Props = DrawerViewConfig & {
 /**
  * Component that renders the drawer.
  */
-export default class DrawerView<T: *> extends PureComponent<void, Props, void> {
+export default class DrawerView<T: *> extends PureComponent < void, Props, void> {
   props: Props;
 
-  componentWillMount() {
+  componentWillMount () {
     this._updateScreenNavigation(this.props.navigation);
   }
 
@@ -128,15 +128,19 @@ export default class DrawerView<T: *> extends PureComponent<void, Props, void> {
 
   _drawer: any;
 
-  render() {
+  render () {
     const DrawerScreen = this.props.router.getComponentForRouteName(
       'DrawerClose'
     );
+
+    const options = this.props.router.getScreenOptions(this._screenNavigationProp, this.props.screenProps)
+
     return (
       <DrawerLayout
         ref={(c: *) => {
           this._drawer = c;
         }}
+        drawerLockMode={options.drawerLockMode || 'unlocked'}
         drawerWidth={this.props.drawerWidth}
         onDrawerOpen={this._handleDrawerOpen}
         onDrawerClose={this._handleDrawerClose}
