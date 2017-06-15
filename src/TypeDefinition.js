@@ -317,6 +317,7 @@ export type NavigationDrawerScreenOptions = NavigationScreenOptions & {
     drawerLockMode ?: 'unlocked' | 'locked-close' | 'locked-open', // defaults `unlocked`
 };
 
+
 export type NavigationRouteConfigMap = {
   [routeName: string]: NavigationRouteConfig<*>,
 };
